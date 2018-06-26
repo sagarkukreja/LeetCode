@@ -1,0 +1,9 @@
+class Solution {
+    public boolean rotateString(String A, String B) {
+        int len = A.length();
+        if(A.length() != B.length()) return false;
+        if(len == 0) return true;
+        if(A.length() == B.length() && (A+A).contains(B))return true;
+        else return false;
+    }
+}
