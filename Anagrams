@@ -1,0 +1,32 @@
+class Solution {
+    public boolean isAnagram(String s, String t) {
+        if(s.length() != t.length())
+            return false;
+        char[] st1 = s.toCharArray();
+        char[] st2 = t.toCharArray();
+        Arrays.sort(st1);
+        Arrays.sort(st2);
+        return Arrays.equals(st1,st2);
+    }
+}
+
+//Method 2
+
+class Solution {
+    public boolean isAnagram(String s, String t) {
+        if(s.length()!= t.length())
+            return false;
+        int[] ch1 = new int[256];
+        int[] ch2 = new int[256];
+        
+        for(int i = 0;i<s.length();i++){
+            ch1[s.charAt(i)]++;
+            ch2[t.charAt(i)]++;
+        }
+        
+        for(int i = 0;i<256;i++){
+            if(ch1[i]!=ch2[i])
+                return false;
+        }return true;
+    }
+}
