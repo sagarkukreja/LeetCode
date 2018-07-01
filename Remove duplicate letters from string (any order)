@@ -1,0 +1,20 @@
+class Solution {
+    public String removeDuplicateLetters(String s) {
+        int index = 0;
+        String st = "";
+        char[] ch = s.toCharArray();
+        for(int i =  0;i<ch.length;i++){
+            int j;
+            for(j = 0;j<i;j++){
+                if(ch[i] == ch[j])
+                    break;
+                   }
+                if(j==i){
+                    ch[index] = ch[i];
+                    index++;
+                
+            }
+           st = new String(ch);
+        }return st.substring(0,index);
+    }
+}
