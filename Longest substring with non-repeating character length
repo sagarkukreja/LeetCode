@@ -1,0 +1,46 @@
+//Java program to find the length of the longest substring
+//without repeating characters
+public class GFG
+{
+	
+	static final int NO_OF_CHARS = 256;
+	
+	static int longestUniqueSubsttr(String str)
+	{
+	    int curlen = 1;
+	    int maxlen = 1;
+	    int n = str.length();
+	    int[] visited = new int[NO_OF_CHARS];
+	    int previndex = 0;
+	    for(int i = 0;i<n;i++)
+	        visited[i] = -1;
+	   visited[str.charAt(0)] = 1;
+	   
+	    for(int i = 1;i<n;i++){
+	        previndex = visited[str.charAt(i)];
+	        if(previndex == -1 || i-curlen > previndex )
+	            curlen++;
+	        else{
+	            if(maxlen<curlen)
+	                maxlen = curlen;
+	           curlen = i-previndex;
+	                
+	        }
+	        visited[str.charAt(i)]=i;
+	        
+	    }
+	    return maxlen;
+	}
+	
+	
+	/* Driver program to test above function */
+	public static void main(String[] args) 
+	{
+		String str = "ABDEFGABEF";
+		System.out.println("The input string is "+str);
+		int len = longestUniqueSubsttr(str);
+		System.out.println("The length of "
+				+ "the longest non repeating character is "+len);
+	}
+}
+
