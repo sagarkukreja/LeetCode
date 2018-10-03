@@ -1,0 +1,61 @@
+/*package whatever //do not write package name here */
+
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+class GFG {
+	public static void main (String[] args) {
+		Scanner sc = new Scanner(System.in);
+		String ss = sc.next();
+		int x = Integer.parseInt(ss);
+		//System.out.println(x+"x");
+		GFG g = new GFG();
+		for(int i = 0;i<x;i++){
+		    String s = sc.next();
+		    //System.out.println(s);
+		    g.palindrome(s);
+		}
+	}
+	
+	public void palindrome(String str){
+	    int n = str.length();
+	    boolean table[][] = new boolean[n][n];
+	    
+	    int start = 0;
+	    int maxLength = 1;
+	    for(int i = 0;i<n;i++){
+	        table[i][i] = true;
+	        //start = i;
+	       // maxLength = 1;
+	    }
+	    
+	    for(int i = 0;i<n-1;i++){
+	        if(str.charAt(i) == str.charAt(i+1)){
+	            table[i][i+1] = true;
+	            int l = 2;
+	            if (l > maxLength) { 
+                        start = i; 
+                        maxLength = l; 
+                    } 
+	        }
+	    }  
+	        for(int k = 3;k<=n;k++){
+	            for(int i = 0;i<n-k+1;i++){
+	                int j = i+k-1;
+	                if(str.charAt(i)==str.charAt(j) && table[i+1][j-1]==true)
+	                    {
+	                        table[i][j] = true;
+	                        if(k>maxLength){
+	                        start = i;
+	                        maxLength = k;
+	                        }
+	                    }     
+	                    }
+	            
+	        }
+	        
+	        //System.out.println(maxLength);
+	        System.out.println(str.substring(start,start+maxLength));
+	    }
+	}
