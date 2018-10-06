@@ -1,0 +1,48 @@
+/*package whatever //do not write package name here */
+
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+class GFG {
+	public static void main (String[] args) {
+		Scanner sc = new Scanner(System.in);
+		int n = sc.nextInt();
+		for(int i = 0;i<n;i++){
+		    int size1 = sc.nextInt();
+		    int size2 = sc.nextInt();
+		    int[] a1 = new int[size1];
+		    int[] a2 = new int[size2];
+		    for(int j = 0;j<size1;j++){
+		        a1[j] = sc.nextInt();
+		    }
+		    for(int k = 0;k<size2;k++){
+		        a2[k] = sc.nextInt();
+		    }
+		    swap(a1,a2);
+		}
+	}
+	public static void swap(int[] a1,int a2[]){
+	    int sum1=0,sum2=0;
+	    for(int i = 0;i<a1.length;i++)
+	        sum1 += a1[i];
+	    for(int j = 0;j<a2.length;j++)
+	        sum2 += a2[j];
+	   int newSum1=0 ,newSum2 = 0; 
+	   boolean flag = false;
+	   if(!flag){
+	   for(int i = 0;i<a1.length;i++){
+	       if(!flag){
+	       for(int j = 0;j<a2.length;j++){
+	           newSum1 = sum1-a1[i]+a2[j];
+	           newSum2 = sum2-a2[j]+a1[i];
+	           if(newSum1 == newSum2){
+	                flag = true;
+	                System.out.println(1);
+	                break;
+	           }
+	       }}}
+	   }if(flag ==false)
+	        System.out.println(-1);
+	}
+}
